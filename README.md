@@ -28,7 +28,7 @@
 ```
 
 ## 環境建置
-在開始執行前，請確保已安裝必要的 Python 套件，本專案需要兩個虛擬環境：main_env (主環境，執行`controller.py` 、 `host_offline_game`、EEG 和 EMG 相關程式碼，可透過 **requirements.txt** 安裝)、CV_env (執行 `cv_controller.py`，可透過 **requirements_cv.txt** 安裝)，python 版本皆為 3.10。
+在開始執行前，請確保已安裝必要的 Python 套件，本專案需要兩個虛擬環境：main_env (主環境，執行`controller.py` 、 `host_offline_game`、EEG 和 EMG 相關程式碼，可透過 **requirements.txt** 安裝)、CV_env (執行 `cv_controller.py`，可透過 **requirements_cv.txt** 安裝)，Python 版本皆為 3.10。
 
 ## 標準啟動順序
 請開啟多個終端機（Terminal）分別執行。
