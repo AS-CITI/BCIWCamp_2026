@@ -13,8 +13,7 @@ import sys
 
 # 模擬環境參數設定
 SERVER_PORT = 5000
-# 視窗加大以容納分割畫面 (左: 800 for Car, 右: 400 for Arm)
-WINDOW_WIDTH = 1200
+# 視窗加大以容納分割畫面 
 WINDOW_HEIGHT = 600
 SCREEN_SIZE = (WINDOW_WIDTH, WINDOW_HEIGHT)
 
@@ -23,8 +22,8 @@ CAR_ZONE_WIDTH = 600
 ARM_ZONE_WIDTH = 600
 
 CAR_COLOR = (0, 255, 0) # 亮綠色車子
-BG_COLOR_LEFT = (30, 30, 30) # 左側小車區背景 (深灰)
-BG_COLOR_RIGHT = (20, 20, 20) # 右側手臂區背景 (更深灰)
+BG_COLOR_LEFT = (30, 30, 30) # 左側小車區背景 
+BG_COLOR_RIGHT = (20, 20, 20) # 右側手臂區背景 
 TEXT_COLOR = (255, 255, 255) # 白色文字
 ARM_COLOR = (255, 165, 0) # 橘色連桿
 JOINT_COLOR = (255, 255, 255) # 白色關節點
@@ -38,11 +37,11 @@ arm_font = pygame.font.SysFont("Microsoft JhengHei", 12)
 
 # 模擬車體運動狀態 (座標參考左側 CAR_ZONE)
 car_pos = np.array([400.0, 300.0])
-car_angle = 0.0 # 小車面向角度 (單位: 度)
+car_angle = 0.0 # 小車面向角度 
 car_speed = 0.0
 current_action = "STOP"
 
-# 模擬 6 軸手臂關節角度 (初始化為 180 度，dtype=int 確保文字顯示簡潔)
+# 模擬 6 軸手臂關節角度 
 arm_angles = np.array([180, 180, 180, 180, 180, 180], dtype=int)
 ANGLE_LIMITS = [(30, 330), (150, 260), (100, 270), (160, 350), (10, 350), (170, 290)]
 JOINT_NAMES = ["m0", "m1", "m2", "m3", "m4", "m5"]
@@ -51,7 +50,7 @@ def update_physics():
     """根據當前速度與角度更新車體座標"""
     global car_pos
     rad = np.radians(car_angle)
-    # 計算位移向量 (注意: Pygame 的 Y 軸向下，所以 sin 取負)
+    # 計算位移向量 
     velocity = np.array([np.cos(rad), -np.sin(rad)]) * car_speed
     car_pos += velocity
     
@@ -158,8 +157,7 @@ def draw_scene():
     # 將手臂基座設在右側區域中央偏下
     draw_arm_viz(screen, CAR_ZONE_WIDTH, WINDOW_HEIGHT * 0.3, arm_angles)
 
-    # 3. 顯示文字資訊 (統一放在視窗左上角，清晰可讀)
-    # 這裡將 angles 轉換為 list(dtype=int) 的文字呈現，解決顯示 np.int64 的問題
+    # 3. 顯示文字資訊 
     angles_display = f"[{', '.join(map(str, list(arm_angles)))}]"
     info_text = [
         f"系統指令: {current_action}",
@@ -180,7 +178,7 @@ def start_sim_server(port):
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind(('0.0.0.0', port))
     server.listen(1)
-    server.setblocking(False) # 設定為非阻塞模式以維持畫面更新
+    server.setblocking(False) 
     
     print(f"[模擬器] 6 軸伺服器啟動於 Port {port}")
     conn = None
