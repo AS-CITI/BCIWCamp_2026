@@ -1,0 +1,38 @@
+{
+    "_readme": "硬體與系統全域配置檔。",
+    
+    "EEG": {
+        "_comment": "腦波模組設定：控制總開關、15Hz 視覺刺激開關，以及各頻帶的觸發門檻",
+        "enabled": true,
+        "ssvep_enabled": true,
+        "stream_name": "EEG_stream",
+        "alpha_threshold": -0.2,
+        "psd_15_threshold": -0.5
+    },
+    
+    "EMG": {
+        "_comment": "肌電模組設定：定義 LSL 串流名稱、採樣率 (1000Hz)，以及 3 個通道個別的能量觸發門檻",
+        "stream_name": "EMG_stream",
+        "channels": [
+            "ch1",
+            "ch2",
+            "ch3"
+        ],
+        "sfreq": 1000,
+        "thresholds": {
+            "ch1": 10,
+            "ch2": 10,
+            "ch3": 10
+        },
+        "enabled": true
+    },
+    
+    "System": {
+        "_comment": "系統連線設定：定義模擬器的 TCP 位址 (Port 5000)，以及 CV 影像手勢的接收埠 (Port 6000)",
+        "car_ip": "127.0.0.1",
+        "car_port": 5000,
+        "cv_port": 6000,
+        "cv_enabled": true,
+        "control_interval": 0.05
+    }
+}

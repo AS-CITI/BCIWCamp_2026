@@ -1,0 +1,8 @@
+numpy
+scipy
+mne
+pylsl
+scikit-learn
+psychopy
+pynput
+pygame

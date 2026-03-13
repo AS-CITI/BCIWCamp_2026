@@ -1,0 +1,24 @@
+# Python 緩存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虛擬環境
+venv/
+env/
+.env
+
+# 數據與模型檔 (避免上傳大檔案或私密數據)
+*.npz
+*.npy
+*.keras
+*.h5
+*.pkl
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+
+# 編輯器設定
+.vscode/
+.idea/
